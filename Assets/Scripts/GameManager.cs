@@ -103,6 +103,8 @@ public class GameManager : MonoBehaviour
 
 	public void QuitGame()
 	{
+		PlayerPrefs.DeleteKey("HighScore");
+		PlayerPrefs.Save();
 		Application.Quit();
 	}
 
