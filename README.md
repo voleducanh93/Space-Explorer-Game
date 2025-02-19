@@ -5,6 +5,11 @@ A 2D space arcade game where players navigate through space, avoiding asteroids 
 ### Technical Requirements
     Unity Version: Unity 6000.0.37f1
     Target Platform: Windows.
+### Team Members
+    _Nguyễn Quang Sơn
+    _Võ Lê Đức Anh
+    _Phan Đức Hậu
+    _Nguyễn Minh Thành
 
 ### 1. Game Overview
 Space Explorer is a 2D arcade-style game built in Unity where players control a spaceship through increasingly challenging levels. The game features asteroid avoidance, star collection, and a scoring system that rewards skilled gameplay.
