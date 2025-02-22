@@ -31,7 +31,7 @@ Space Explorer is a 2D arcade-style game built in Unity where players control a 
 
 #### 2.2 Asteroids
 - **Properties**:
-  - 3 health points
+  - 2 health points
   - Moves downward at 2 units per second
   - Explodes on destruction with sound effects
 
@@ -55,7 +55,7 @@ Space Explorer is a 2D arcade-style game built in Unity where players control a 
 - **Features**:
   - Complex movement patterns
   - Multi-phase attack system:
-    - Initial shooting phase (3 attacks)
+    - Initial shooting phase (2 attacks)
     - Movement phase with rapid-fire attacks
   - Entrance and exit animations
   - Custom bullet patterns
