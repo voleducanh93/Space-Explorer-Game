@@ -29,7 +29,7 @@ public class PlayerBullet : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.CompareTag("AsteroidSpawnerTag"))
+		if (collision.CompareTag("AsteroidSpawnerTag") || collision.tag == "EnemyShipTag")
 		{
 			Destroy(gameObject);
 		}

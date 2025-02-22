@@ -117,17 +117,23 @@ public class PlayerController : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.tag == "AsteroidSpawnerTag")
+		if (collision.tag == "AsteroidSpawnerTag" || collision.tag == "EnemyShipTag" || collision.tag == "EnemyBulletTag")
 		{
 			ScoreManager.Instance.AddScore(-10);
 			PlayExplosion();
-			TakeDamage();
+			TakeDamage(1);
 		}
 
+		if (collision.tag == "BossShipTag" || collision.tag == "BossBulletTag")
+		{
+			ScoreManager.Instance.AddScore(-10);
+			PlayExplosion();
+			TakeDamage(3);
+		}
 	}
-	void TakeDamage()
+	void TakeDamage(int damge)
 	{
-		health = Mathf.Max(0, health - 1);
+		health = Mathf.Max(0, health - damge);
 		UpdateHeartsUI();
 
 		if (health == 0)

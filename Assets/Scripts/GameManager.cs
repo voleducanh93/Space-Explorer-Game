@@ -1,16 +1,18 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 	public GameObject playerShip;
 	public GameObject asteroidSpawner;
+	public GameObject enemySpawner;
 	public GameObject starSpawner;
 	public GameObject gameOverGO;
 	public GameObject highScoreGO;
 	public GameObject pauseMenuGO;
 
 	public static GameManager Instance;
+	private static bool hasQuitProperly = false; 
 
 	private void Awake()
 	{
@@ -20,11 +22,6 @@ public class GameManager : MonoBehaviour
 		}
 	
 	}
-	public int GetCurrentLevel()
-	{
-		return PlayerPrefs.GetInt("CurrentLevel", 1); 
-	}
-
 	public enum GameManagerState
 	{
 		Gameplay,
@@ -32,7 +29,7 @@ public class GameManager : MonoBehaviour
 		Pause,
 	}
 
-	GameManagerState GMState;
+	public GameManagerState GMState { get; private set; }
 	private bool isPaused = false;
 
 	void Start()
@@ -68,12 +65,12 @@ public class GameManager : MonoBehaviour
 				playerShip.GetComponent<PlayerController>().Init();
 				asteroidSpawner.GetComponent<AsteroidSpawner>().ScheduleNextAsteroidSpawner();
 				starSpawner.GetComponent<StarSpawner>().ScheduleNextStarSpawner();
-
+				enemySpawner.GetComponent<EnemySpawner>().ScheduleNextEnemySpawner();
 				break;
 			case GameManagerState.GameOver:
 				asteroidSpawner.GetComponent<AsteroidSpawner>().UnScheduleNextAsteroidSpawn();
 				starSpawner.GetComponent<StarSpawner>().UnScheduleNextStarSpawn();
-
+				enemySpawner.GetComponent<EnemySpawner>().UnScheduleNextEnemySpawn();
 				gameOverGO.SetActive(true);
 
 				highScoreGO.SetActive(true);
@@ -103,6 +100,7 @@ public class GameManager : MonoBehaviour
 
 	public void QuitGame()
 	{
+		hasQuitProperly = true; 
 		PlayerPrefs.DeleteKey("HighScore");
 		PlayerPrefs.Save();
 		Application.Quit();
@@ -112,5 +110,13 @@ public class GameManager : MonoBehaviour
 	{
 		Time.timeScale = 1f;
 		SceneManager.LoadSceneAsync("Main Menu");
+	}
+	private void OnApplicationQuit()
+	{
+		if (hasQuitProperly)
+		{
+			PlayerPrefs.DeleteKey("HighScore");
+			PlayerPrefs.Save();
+		}
 	}
 }

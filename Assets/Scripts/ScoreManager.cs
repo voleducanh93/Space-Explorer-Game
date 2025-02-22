@@ -21,7 +21,14 @@ public class ScoreManager : MonoBehaviour
 		}
 		Instance = this;
 
-		highScore = PlayerPrefs.GetInt("HighScore", 0);
+		if (PlayerPrefs.HasKey("HighScore"))
+		{
+			highScore = PlayerPrefs.GetInt("HighScore", 0);
+		}
+		else
+		{
+			highScore = 0;
+		}
 	}
 
 	void Start()
@@ -77,8 +84,10 @@ public class ScoreManager : MonoBehaviour
 
 	public void ResetScore()
 	{
-		score = 0;
-		UpdateScoreUI();
+		highScore = 0;
+		PlayerPrefs.DeleteKey("HighScore");
+		PlayerPrefs.Save();
+		UpdateHighScoreUI();
 	}
 
 }
