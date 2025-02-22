@@ -13,7 +13,8 @@ A 2D space arcade game where players navigate through space, avoiding asteroids 
 
 ### 1. Game Overview
 Space Explorer is a 2D arcade-style game built in Unity where players control a spaceship through increasingly challenging levels. The game features asteroid avoidance, star collection, and a scoring system that rewards skilled gameplay.
-![Screenshot 2025-02-22 074148](https://github.com/user-attachments/assets/6dfef6a8-72c7-4d0c-987e-b81988887f6a)
+
+![Screenshot 2025-02-22 074209](https://github.com/user-attachments/assets/79eb7697-0b4c-4dda-8f3b-e07bb109bac7)
 
 ### 2. Game Elements
 
